@@ -10,7 +10,7 @@ CREATE DATABASE Aprende_Ingles;
 -- Uso la base de datos creada anteriormente para crear la estructura de esta 
 USE Aprende_Ingles;
 
--- Creo la tabla categorías
+-- Creo la tabla Categorías
 CREATE TABLE Categorias(
 
     id_categoria tinyint unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
