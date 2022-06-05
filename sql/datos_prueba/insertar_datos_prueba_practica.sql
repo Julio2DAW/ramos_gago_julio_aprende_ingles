@@ -5,7 +5,7 @@
 */
 
 -- Insertar datos en la tabla Categorías
-INSER INTO Categorias (nombre) VALUES
+INSERT INTO Categorias (nombre) VALUES
 ('Animales'),
 ('Colores'),
 ('Comida'),
@@ -13,7 +13,7 @@ INSER INTO Categorias (nombre) VALUES
 ('Profesiones');
 
 -- Insertar datos en la tabla Palabras
-INSER INTO Palabras (espanol, ingles, categoria) VALUES
+INSERT INTO Palabras (espanol, ingles, categoria) VALUES
 ('Perro', 'Dog', 1),
 ('Gato', 'Cat', 1),
 ('Caballo', 'Horse', 1),
@@ -66,7 +66,7 @@ INSER INTO Palabras (espanol, ingles, categoria) VALUES
 ('Escritora', 'Writer', 5);
 
 -- Insertar datos en la tabla Usuarios
-INSER INTO Usuarios (email, password) VALUES
+INSERT INTO Usuarios (email, password) VALUES
 ('julio@gmail.com', '12345'),
 ('felipe@gmail.com', '12345'),
 ('diego@gmail.com', '12345'),
