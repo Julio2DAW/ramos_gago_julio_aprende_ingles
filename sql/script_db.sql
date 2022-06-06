@@ -23,7 +23,7 @@ CREATE TABLE Palabras(
     id_palabra smallint unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
     espanol varchar(30) NOT NULL,
     ingles varchar(30) NOT NULL,
-    audio varchar(30) NULL,
+    audio tinyblob NULL,
     categoria tinyint unsigned NOT NULL,
     CONSTRAINT FK_Categoria FOREIGN KEY (categoria) REFERENCES Categorias (id_categoria)
 );
