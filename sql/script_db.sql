@@ -42,7 +42,7 @@ CREATE TABLE Prac_Ejer(
     id_prac_ejer smallint unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
     fecha_hora datetime NOT NULL,
     numIntentos tinyint unsigned DEFAULT 0,
-    superado char(1) NOT NULL CHECK (superado IN ('S','N')),
+    superado char(1) NOT NULL DEFAULT 'n' CHECK (superado IN ('s','n')),
     usuario smallint unsigned NOT NULL,
     CONSTRAINT FK_Usuario FOREIGN KEY (usuario) REFERENCES Usuarios (id_usuario)
 );
@@ -52,7 +52,7 @@ CREATE TABLE Palabras_Ejer(
 
     id_palabra smallint unsigned,
     id_prac_ejer smallint unsigned,
-    fallada char(1) NOT NULL CHECK (fallada IN ('S','N')),
+    fallada char(1) NOT NULL CHECK (fallada IN ('s','n')),
     PRIMARY KEY (id_palabra, id_prac_ejer),
     CONSTRAINT FK_Palabra FOREIGN KEY (id_palabra) REFERENCES Palabras (id_palabra),
     CONSTRAINT FK_Prac_Ejer FOREIGN KEY (id_prac_ejer) REFERENCES Prac_Ejer (id_prac_ejer)
