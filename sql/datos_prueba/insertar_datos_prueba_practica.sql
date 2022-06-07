@@ -4,6 +4,9 @@
     @author Julio Antonio Ramos Gago <jramosgago.guadalupe@alumnado.fundacionloyola.net>.
 */
 
+-- Usar BD aprende_inglés
+use aprende_ingles;
+
 -- Insertar datos en la tabla Categorías
 INSERT INTO Categorias (nombre) VALUES
 ('Animales'),
