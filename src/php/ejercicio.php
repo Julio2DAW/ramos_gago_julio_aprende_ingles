@@ -18,14 +18,25 @@
             </ul>
         </nav>
         <main>
-            <div>
-                <ul>
-                    <li><a href=""></a>Nueva Práctica</li>
-                </ul>
-            </div>
+            <form action="#" method="POST"> 
+                <div><input type="submit" value="Nueva Práctica" name="nuevaPractica" /></div>
+            </form>
         </main>
         <footer>
             <p>Julio Antonio Ramos Gago || Github: Julio2DAW</p>
         </footer>
     </body>
 </html>
+<?php
+
+    if(isset($_POST['nuevaPractica'])) {
+
+        require_once 'controlador.php';
+
+        $controlador = new Controlador();
+        $resultado = $controlador->nuevaPartidaC();
+
+        header ("refresh:0.5; url=nuevaPractica.php");
+    }
+    
+                    
