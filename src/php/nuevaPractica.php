@@ -6,15 +6,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta author="Julio Antonio Ramos Gago (jramosgago.guadalupe@alumnado.fundacionloyola.net)" />
         <title>Aprende Inglés</title>
-        <link rel="stylesheet" href="css/estilos.css" />
-        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="../css/estilos.css" />
+        <link rel="stylesheet" href="../css/reset.css" />
     </head>
     <body>
         <nav>
             <h2>Nueva Práctica</h2>
         </nav>
         <main>
-            <form action="#" method="POST"></form>
+            <form action="#" method="POST">
                 <?php
                     require_once 'controlador.php';
 
@@ -26,12 +26,13 @@
 
                         echo    "<div>
                                     <label>".$registro['ingles']."</label>
-                                    <select name='selectCategoria'>";
-
+                                    <select name='categoria[]'>";
+                                
                         while ($fila=$resultado2->fetch_array()){
 
                             echo    "<option value=".$fila['id_categoria'].">".$fila['nombre']."</option>";
                         }
+
                         echo        "</select>
                                 </div>";
                     }

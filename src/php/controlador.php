@@ -27,16 +27,28 @@
             $this->modelo = new Modelo();
         }
 
+        /**
+         * @function nuevaPartidaC
+         * Método para crear una nueva partida.
+         */
         function nuevaPartidaC(){
 
             return $this->modelo->nuevaPartidaM();
         }
 
+        /**
+         * @function palabrasC
+         * Método para obtener las palabras de la base de datos.
+         */
         function palabrasC(){
 
             return $this->modelo->palabrasM();
         }
 
+        /**
+         * @function categoriasC
+         * Método para obtener las categorías de la base de datos.
+         */
         function categoriasC(){
 
             return $this->modelo->categoriasM();

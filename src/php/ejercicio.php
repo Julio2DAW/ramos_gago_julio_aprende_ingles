@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta author="Julio Antonio Ramos Gago (jramosgago.guadalupe@alumnado.fundacionloyola.net)" />
         <title>Aprende Inglés</title>
-        <link rel="stylesheet" href="css/estilos.css" />
-        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="../css/estilos.css" />
+        <link rel="stylesheet" href="../css/reset.css" />
     </head>
     <body>
         <nav>
