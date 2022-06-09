@@ -22,19 +22,27 @@
                     $resultado = $controlador->palabrasC();
                     $resultado2 = $controlador->categoriasC();
 
-                    while ($registro=$resultado->fetch_array()){
+                    for ($i = 0; $i < 10; $i++) {
 
-                        echo    "<div>
+                        $registro = $resultado->fetch_assoc();
+                        echo "<label>".$registro['ingles']."</label>";
+                        /* echo    "<div>
                                     <label>".$registro['ingles']."</label>
-                                    <select name='categoria[]'>";
-                                
-                        while ($fila=$resultado2->fetch_array()){
+                                    <select name='categoria[1]'>"; */
+                        echo "<select name='categoria[]'>";
+                        /* while ($fila=$resultado2->fetch_array()){
 
                             echo    "<option value=".$fila['id_categoria'].">".$fila['nombre']."</option>";
-                        }
+                        } */
 
-                        echo        "</select>
-                                </div>";
+                        for($j = 0; $j < 5; $j++) {
+                            
+                            $fila = $resultado2->fetch_array();
+                            echo    "<option value=".$fila['id_categoria'].">".$fila['nombre']."</option>";
+                        }
+                        echo        "</select>";
+                        /* echo        "</select>
+                                </div>"; */
                     }
                 ?>
                 <input type="submit" value="Comprobar" name="comprobar" />
