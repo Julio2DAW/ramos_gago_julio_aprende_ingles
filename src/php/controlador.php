@@ -63,8 +63,37 @@
             return $this->modelo->palabrasRandomM($id_palabra);
         }
 
+        /**
+         * @function palabraAcertadaSNC
+         * Método para guardar el estado de las palabras.
+         */
         function palabraAcertadaSNC($fallada, $id_palabra){
         
             return $this->modelo->palabraAcertadaSNM($fallada, $id_palabra);
+        }
+
+        /**
+         * @function practicasNoSuperadasC
+         * Método para sacar las prácticas no superadas del usuario.
+         */
+        function practicasNoSuperadasC(){
+
+            return $this->modelo->practicasNoSuperadasM();
+        }
+
+        /**
+         * @function palabrasRepetidasC
+         * Método para sacar las palabras de las prácticas falladas
+         */
+        function palabrasRepetidasC(){
+
+            if(isset($_GET['id'])) {
+
+                $id = $_GET['id'];
+                return $this->modelo->palabrasRepetidasM($id);
+            }else {
+
+                return 'Ha sucedido un problema';
+            }
         }
     }

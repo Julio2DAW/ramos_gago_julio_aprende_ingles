@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
@@ -12,7 +11,7 @@
     </head>
     <body>
         <nav>
-            <h2>Nueva Práctica</h2>
+            <h2>Práctica Repetida</h2>
         </nav>
         <main>
             <form action="#" method="POST">
@@ -20,23 +19,18 @@
                     require_once 'controlador.php';
 
                     $controlador = new Controlador();
-                    $resultado = $controlador->palabrasC();
+                    $resultado = $controlador->palabrasRepetidasC();
                     $resultado2 = $controlador->categoriasC();
                     $categoria = $resultado2->num_rows;
                     $array_palabras = array();
 
-                    while ($palabra=$resultado->fetch_array()) {
-                        
-                        array_push($array_palabras, $palabra);
-                    }
-
                     for ($i = 0; $i < 10; $i++) {
 
-                        $palabra_random = $array_palabras[rand(0,49)];
+                        $palabra = $resultado->fetch_array();
 
                         echo    "<div id=columna>
                                     <div class=elemento>
-                                        <label>".$palabra_random['ingles']."</label>
+                                        <label>".$palabra['ingles']."</label>
                                         <select name='categoria[]'>";
 
                         for($j = 0; $j < $categoria; $j++) {
@@ -50,7 +44,6 @@
                                 </div>";
                         
                         mysqli_data_seek($resultado2, 0);
-                        $insertar_palabra = $controlador->palabrasRandomC($palabra_random['id_palabra']);
                     }
                 ?>
                 <input type="submit" value="Comprobar" name="comprobar" />
@@ -61,20 +54,3 @@
         </footer>
     </body>
 </html>
-<?php
-
-    if(isset($_POST['comprobar'])) {
-
-        for ($i = 0; $i < 10; $i++) {
-
-            if($palabra_random['categoria'] == $fila['id_categoria']) {
-
-                $estado = 1;
-                $estado_palabra = $controlador->palabraAcertadaSNC($estado, $palabra_random['id_palabra']);
-            }else{
-
-                $estado = 0;
-                $estado_palabra = $controlador->palabraAcertadaSNC($estado, $palabra_random['id_palabra']);
-            }
-        }
-    }

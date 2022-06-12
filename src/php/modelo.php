@@ -94,7 +94,35 @@
          */
         function palabraAcertadaSNM($fallada, $id_palabra){
 
-            $sql = "UPDATE minijuego SET fallada = $fallada WHERE id_palabra=$id_palabra";
-            $this->conexion->query($sql);
+            $id_prac_ejer = $this->maximoValor(); 
+            
+            $sql = "UPDATE minijuego SET fallada = $fallada WHERE (id_palabra = $id_palabra and id_prac_ejer = $id_prac_ejer[0])";
+            return $this->conexion->query($sql);
+        }
+
+
+        /**
+         * @function practicasNoSuperadasM
+         * Función que realiza una consulta (select), para seleccionar las prácticas no superadas por el usuario
+         */
+        function practicasNoSuperadasM(){
+
+            $sql = "SELECT * FROM prac_ejer WHERE (superado = 0 and usuario = 2)";
+            return $this->conexion->query($sql);
+        }
+
+        /**
+         * @function palabrasRepetidas
+         * Función que realiza una consulta (select), para sacar las palabras repetidas de la práctica
+         */
+        function palabrasRepetidasM($id){
+
+            $sql = "SELECT *
+            FROM ((palabras_ejer
+            INNER JOIN palabras ON palabras_ejer.id_palabra = palabras.id_palabra)
+            INNER JOIN prac_ejer ON palabras_ejer.id_prac_ejer = prac_ejer.id_prac_ejer)
+            WHERE (prac_ejer.usuario = 2 and prac_ejer.id_prac_ejer = $id)";
+
+            return $this->conexion->query($sql);
         }
     }

@@ -22,6 +22,19 @@
             <form action="#" method="POST"> 
                 <div><input type="submit" value="Nueva Práctica" name="nuevaPractica" /></div>
             </form>
+
+            <?php
+
+                    require_once 'controlador.php';
+
+                    $controlador = new Controlador();
+                    $fallado = $controlador->practicasNoSuperadasC();
+
+                    while ($registro=$fallado->fetch_array()) {
+
+                        echo    "<div><a href='falladaPractica.php?id=".$registro['id_prac_ejer']."'>Repetir práctica ".$registro['id_prac_ejer']."</a></div>";
+                    }
+                ?>
         </main>
         <footer>
             <p>Julio Antonio Ramos Gago || Github: Julio2DAW</p>
@@ -32,9 +45,6 @@
 
     if(isset($_POST['nuevaPractica'])) {
 
-        require_once 'controlador.php';
-
-        $controlador = new Controlador();
         $resultado = $controlador->nuevaPartidaC();
 
         header ("refresh:0.5; url=nuevaPractica.php");
