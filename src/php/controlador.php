@@ -53,4 +53,18 @@
 
             return $this->modelo->categoriasM();
         }
+
+        /**
+         * @function palabrasRandomC
+         * Método para guardar las palabras de la práctica.
+         */
+        function palabrasRandomC($id_palabra){
+
+            return $this->modelo->palabrasRandomM($id_palabra);
+        }
+
+        function palabraAcertadaSNC($fallada, $id_palabra){
+        
+            return $this->modelo->palabraAcertadaSNM($fallada, $id_palabra);
+        }
     }

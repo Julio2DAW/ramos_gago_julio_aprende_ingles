@@ -29,7 +29,7 @@
 
         /**
          * @function nuevaPartidaM
-         * Función que realiza una consulta (insert), para introducir nuevas prácticas en la tabla prac_ejer
+         * Función que realiza una consulta (insert), para introducir nuevas prácticas en la tabla prac_ejer.
          */
         function nuevaPartidaM(){
 
@@ -41,7 +41,7 @@
 
         /**
          * @function palabrasM
-         * Función que realiza una consulta (select), para sacar las palabras de la tabla palabras
+         * Función que realiza una consulta (select), para sacar las palabras de la tabla palabras.
          */
         function palabrasM(){
 
@@ -53,7 +53,7 @@
 
         /**
          * @function categoriasM
-         * Función que realiza una consulta (select), para sacar las categorías de la tabla categorias
+         * Función que realiza una consulta (select), para sacar las categorías de la tabla categorias.
          */
         function categoriasM(){
 
@@ -61,5 +61,40 @@
             $sql = "SELECT * FROM categorias";
             //Ejecuto la consulta y la retorno
             return $this->conexion->query($sql);
+        }
+
+        /**
+         * @function palabrasRandomM
+         * Función que realiza una consulta (insert), para guardar las palabras.
+         */
+        function palabrasRandomM($id_palabra){
+
+            $id_prac_ejer = $this->maximoValor(); 
+
+            $sql = "INSERT INTO palabras_ejer (id_palabra, id_prac_ejer) VALUES ($id_palabra, $id_prac_ejer[0])";
+            $this->conexion->query($sql);
+        }
+
+        /**
+         * @function maximoValor
+         * Función que realiza una consulta (select), para sacar la máxima práctica.
+         * @return $fila
+         */
+        function maximoValor(){
+
+            $sql = "SELECT MAX(id_prac_ejer) FROM prac_ejer";
+            $fila = ($this->conexion->query($sql))->fetch_array();
+            return $fila;
+        }
+
+        /**
+         * @function palabraAcertadaSNM
+         * Función que realiza una consulta (update), para guardar el estado de la palabra.
+         * @param $fallada $id_palabra
+         */
+        function palabraAcertadaSNM($fallada, $id_palabra){
+
+            $sql = "UPDATE minijuego SET fallada = $fallada WHERE id_palabra=$id_palabra";
+            $this->conexion->query($sql);
         }
     }

@@ -1,0 +1,18 @@
+/**
+* @file submit.css
+* Estilos botones de la web.
+* @author Julio Antonio Ramos Gago (jramosgago.guadalupe@alumnado.fundacionloyola.net)
+* @license GPLv3 2022.
+*/
+
+input[type=submit]{
+    background-color: crimson;
+    padding: 20px;
+    font-size: 30px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-color: black;
+}
