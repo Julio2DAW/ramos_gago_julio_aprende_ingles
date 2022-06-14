@@ -25,13 +25,17 @@
                     $categoria = $resultado2->num_rows;
                     $array_palabras = array();
 
+
                     while ($palabra=$resultado->fetch_array()) {
                         
+                        //Insertar los elementos al final de la array
                         array_push($array_palabras, $palabra);
                     }
 
+                    //For para mostrar las palabras y su select con las categorías a seleccionar
                     for ($i = 0; $i < 10; $i++) {
 
+                        //Obtener palabras random de la base de datos
                         $palabra_random = $array_palabras[rand(0,49)];
 
                         echo    "<div id=columna>
@@ -39,6 +43,7 @@
                                         <label>".$palabra_random['ingles']."</label>
                                         <select name='categoria[]'>";
 
+                        //Sacar las categorías de la base de datos
                         for($j = 0; $j < $categoria; $j++) {
                             
                             $fila = $resultado2->fetch_array();
@@ -49,7 +54,10 @@
                                     </div>
                                 </div>";
                         
+                        //Hace que se completen de datos todos los select generados anteriormente, si no lo utilizo
+                        //solo genera el contenido del primer select, en PHP aparece obsoleto.
                         mysqli_data_seek($resultado2, 0);
+                        //Insertar las palabras generadas de manera aleatoria en la práctica
                         $insertar_palabra = $controlador->palabrasRandomC($palabra_random['id_palabra']);
                     }
                 ?>
@@ -67,7 +75,7 @@
 
         for ($i = 0; $i < 10; $i++) {
 
-            if($palabra_random['categoria'] == $fila['id_categoria']) {
+            if($fila['id_categoria'] == $palabra_random['categoria']) {
 
                 $estado = 1;
                 $estado_palabra = $controlador->palabraAcertadaSNC($estado, $palabra_random['id_palabra']);
