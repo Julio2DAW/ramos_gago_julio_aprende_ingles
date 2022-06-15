@@ -96,4 +96,79 @@
                 return 'Ha sucedido un problema';
             }
         }
+        
+        /**
+         * @function registroC
+         * Función para registro
+         */
+        function registroC(){
+
+            //Comprobar que el usuario ha introducido un correo
+            if(empty($_POST['email'])){
+
+                return "Debes de insertar un correo";
+            }else{
+
+                $email = "'".$_POST['email']."'";
+            }
+
+            //Comprobar que el usuario ha introducido una contraseña
+            if(empty($_POST['password'])){
+
+                return "Debes de insertar una contraseña";
+            }else{
+
+                $pwd = "'".$_POST['password']."'";
+            }
+
+            //Crea un hash de la contraseña
+            $pwd_encriptada = password_hash($pwd, PASSWORD_DEFAULT);
+            
+            $this->modelo->registroM($email, $pwd_encriptada);
+
+            if($this->modelo->conexion->affected_rows>0){
+
+                echo "Eres nuevo usuario";
+            }else{
+
+                echo "El registro no se ha producido por motivos desconocidos";
+            }
+        }
+
+        /**
+         * Método para comprobar el inicio de sesión
+         */
+        function loginC(){
+
+            //Comprobar que el usuario ha introducido un correo
+            if(empty($_POST['email'])){
+
+                return "Debes de insertar un correo";
+            }else{
+
+                $email = "'".$_POST['email']."'";
+            }
+
+            //Comprobar que el usuario ha introducido una contraseña
+            if(empty($_POST['password'])){
+
+                return "Debes de insertar una contraseña";
+            }else{
+
+                $pwd = "'".$_POST['password']."'";
+            }
+            
+            $usuario = $this->modelo->loginM($email);
+            $nr = mysqli_num_rows($usuario);
+
+            $buscarpass = mysqli_fetch_array($usuario);
+
+            if(($nr == 1) && (password_verify($pwd, $buscarpass['pwd']))){
+
+                return "Bienvenido:  $email";
+            }else{
+
+                return "No se pudo iniciar sesión";
+            }
+        }
     }

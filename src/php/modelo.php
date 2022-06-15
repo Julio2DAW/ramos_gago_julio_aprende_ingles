@@ -125,4 +125,24 @@
 
             return $this->conexion->query($sql);
         }
+
+        /**
+         * @function registroM
+         * Función que realiza una consulta (insert), para introducir un nuevo usuario
+         */
+        function registroM($email, $pwd_encriptada){
+
+            $sql = "INSERT INTO usuarios (email, pwd) VALUES ($email, '$pwd_encriptada')";
+            $this->conexion->query($sql);
+        }
+
+        /**
+         * @function loginM
+         * Función que realiza una consulta (select), para sacar los datos
+         */
+        function loginM($email){
+
+            $sql = "SELECT * FROM usuarios WHERE email = $email";
+            return $this->conexion->query($sql);
+        }
     }

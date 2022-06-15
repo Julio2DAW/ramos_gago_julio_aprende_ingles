@@ -69,7 +69,7 @@ INSERT INTO Palabras (espanol, ingles, categoria) VALUES
 ('Escritora', 'Writer', 5);
 
 -- Insertar datos en la tabla Usuarios
-INSERT INTO Usuarios (email, password) VALUES
+INSERT INTO Usuarios (email, pwd) VALUES
 ('julio@gmail.com', '12345'),
 ('felipe@gmail.com', '12345'),
 ('diego@gmail.com', '12345'),

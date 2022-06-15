@@ -33,7 +33,7 @@ CREATE TABLE Usuarios(
 
     id_usuario smallint unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
     email varchar(80) NOT NULL UNIQUE,
-    password varchar(25) NOT NULL
+    pwd varchar(25) NOT NULL
 );
 
 -- Creo la tabla Prac_Ejer
